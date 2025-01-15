@@ -30,9 +30,12 @@ const SearchFilter = ({
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">Todos os Status</SelectItem>
-          <SelectItem value="active">Ativo</SelectItem>
-          <SelectItem value="blocked">Bloqueado</SelectItem>
-          <SelectItem value="under-review">Em Análise</SelectItem>
+          <SelectItem value="pending">Pendente</SelectItem>
+          <SelectItem value="under_investigation">Em Investigação</SelectItem>
+          <SelectItem value="enforcement_action">Ação de Execução</SelectItem>
+          <SelectItem value="taken_down">Removido</SelectItem>
+          <SelectItem value="dismissed">Descartado</SelectItem>
+          <SelectItem value="reopened">Reaberto</SelectItem>
         </SelectContent>
       </Select>
     </div>

@@ -17,8 +17,14 @@ const StatusBadge = ({ status }: StatusBadgeProps) => {
         return { label: "Em Análise", className: "bg-yellow-500 hover:bg-yellow-600" };
       case "pending":
         return { label: "Pendente", className: "bg-blue-500 hover:bg-blue-600" };
+      case "enforcement_action":
+        return { label: "Em Execução", className: "bg-purple-500 hover:bg-purple-600" };
       case "taken_down":
         return { label: "Removido", className: "bg-gray-500 hover:bg-gray-600" };
+      case "dismissed":
+        return { label: "Descartado", className: "bg-gray-400 hover:bg-gray-500" };
+      case "reopened":
+        return { label: "Reaberto", className: "bg-orange-500 hover:bg-orange-600" };
       default:
         return { label: status, className: "bg-gray-500 hover:bg-gray-600" };
     }
