@@ -10,8 +10,20 @@ const Index = () => {
 
   // Temporary data for demonstration
   const whitelistedSites = [
-    { id: 1, domain: "bet365.bet.br", operator: "Bet365", status: "active", licenseNumber: "BR001" },
-    { id: 2, domain: "sportingbet.bet.br", operator: "Sportingbet", status: "active", licenseNumber: "BR002" },
+    { 
+      id: 1, 
+      domain: "bet365.bet.br", 
+      operator: "Bet365", 
+      status: "active", 
+      licenseNumber: "BR001" 
+    },
+    { 
+      id: 2, 
+      domain: "sportingbet.bet.br", 
+      operator: "Sportingbet", 
+      status: "active", 
+      licenseNumber: "BR002" 
+    },
   ];
 
   return (
@@ -22,24 +34,24 @@ const Index = () => {
             Registro de Casas de Apostas do Brasil
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Acompanhe operadores licenciados e reporte sites suspeitos
+            Consulte operadores licenciados e denuncie sites suspeitos
           </p>
         </div>
 
         <Tabs defaultValue="whitelist" className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="whitelist">Operadores Licenciados</TabsTrigger>
-            <TabsTrigger value="report">Reportar Site</TabsTrigger>
+            <TabsTrigger value="report">Denunciar Site</TabsTrigger>
           </TabsList>
 
-          <SearchFilter
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            activeFilter={activeFilter}
-            setActiveFilter={setActiveFilter}
-          />
-
           <TabsContent value="whitelist">
+            <SearchFilter
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              activeFilter={activeFilter}
+              setActiveFilter={setActiveFilter}
+            />
+            
             <SiteList
               sites={whitelistedSites}
               type="whitelist"
