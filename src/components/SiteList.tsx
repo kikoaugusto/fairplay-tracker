@@ -29,14 +29,14 @@ const SiteList = ({ sites, type, searchTerm, activeFilter }: SiteListProps) => {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Domain</TableHead>
+            <TableHead>Domínio</TableHead>
             {type === "whitelist" && (
               <>
-                <TableHead>Operator</TableHead>
-                <TableHead>License</TableHead>
+                <TableHead>Operador</TableHead>
+                <TableHead>Licença</TableHead>
               </>
             )}
-            {type === "blacklist" && <TableHead>Reason</TableHead>}
+            {type === "blacklist" && <TableHead>Motivo</TableHead>}
             <TableHead>Status</TableHead>
           </TableRow>
         </TableHeader>

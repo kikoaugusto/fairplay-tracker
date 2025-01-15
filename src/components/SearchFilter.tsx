@@ -19,20 +19,20 @@ const SearchFilter = ({
       <div className="flex-1">
         <Input
           type="search"
-          placeholder="Search domains..."
+          placeholder="Buscar domínios..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
       <Select value={activeFilter} onValueChange={setActiveFilter}>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Filter by status" />
+          <SelectValue placeholder="Filtrar por status" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All Status</SelectItem>
-          <SelectItem value="active">Active</SelectItem>
-          <SelectItem value="blocked">Blocked</SelectItem>
-          <SelectItem value="under-review">Under Review</SelectItem>
+          <SelectItem value="all">Todos os Status</SelectItem>
+          <SelectItem value="active">Ativo</SelectItem>
+          <SelectItem value="blocked">Bloqueado</SelectItem>
+          <SelectItem value="under-review">Em Análise</SelectItem>
         </SelectContent>
       </Select>
     </div>

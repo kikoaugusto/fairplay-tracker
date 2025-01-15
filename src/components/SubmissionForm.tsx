@@ -13,12 +13,11 @@ const SubmissionForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Here you would typically send this to your backend
     console.log("Submitted:", { domain, reason });
     
     toast({
-      title: "Report Submitted",
-      description: "Thank you for helping us maintain a safe betting environment.",
+      title: "Denúncia Enviada",
+      description: "Obrigado por ajudar a manter um ambiente de apostas seguro.",
     });
 
     setDomain("");
@@ -28,21 +27,21 @@ const SubmissionForm = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Report a Suspicious Site</CardTitle>
+        <CardTitle>Denunciar Site Suspeito</CardTitle>
         <CardDescription>
-          Help us identify unlicensed or fraudulent betting operators
+          Ajude-nos a identificar operadores sem licença ou fraudulentos
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <label htmlFor="domain" className="text-sm font-medium">
-              Website Domain
+              Domínio do Site
             </label>
             <Input
               id="domain"
               type="text"
-              placeholder="e.g., suspicious-site.com"
+              placeholder="ex: site-suspeito.com"
               value={domain}
               onChange={(e) => setDomain(e.target.value)}
               required
@@ -50,18 +49,18 @@ const SubmissionForm = () => {
           </div>
           <div className="space-y-2">
             <label htmlFor="reason" className="text-sm font-medium">
-              Reason for Report
+              Motivo da Denúncia
             </label>
             <Textarea
               id="reason"
-              placeholder="Please describe why you think this site is suspicious..."
+              placeholder="Por favor, descreva por que você acha que este site é suspeito..."
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               required
             />
           </div>
           <Button type="submit" className="w-full">
-            Submit Report
+            Enviar Denúncia
           </Button>
         </form>
       </CardContent>

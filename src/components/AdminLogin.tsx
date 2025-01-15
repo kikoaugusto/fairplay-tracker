@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 interface AdminLoginProps {
   onSuccess: () => void;
@@ -10,19 +11,20 @@ interface AdminLoginProps {
 
 const AdminLogin = ({ onSuccess }: AdminLoginProps) => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // This is a mock login - in a real app, you'd validate against your backend
     if (username === "admin" && password === "password") {
       onSuccess();
+      navigate("/");
     } else {
       toast({
-        title: "Login Failed",
-        description: "Invalid credentials",
+        title: "Falha no Login",
+        description: "Credenciais inválidas",
         variant: "destructive",
       });
     }
@@ -31,16 +33,16 @@ const AdminLogin = ({ onSuccess }: AdminLoginProps) => {
   return (
     <Card className="w-[400px] mx-auto mt-20">
       <CardHeader>
-        <CardTitle>Admin Login</CardTitle>
+        <CardTitle>Login Administrativo</CardTitle>
         <CardDescription>
-          Access the admin dashboard to manage sites
+          Acesse o painel administrativo para gerenciar sites
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <label htmlFor="username" className="text-sm font-medium">
-              Username
+              Usuário
             </label>
             <Input
               id="username"
@@ -52,7 +54,7 @@ const AdminLogin = ({ onSuccess }: AdminLoginProps) => {
           </div>
           <div className="space-y-2">
             <label htmlFor="password" className="text-sm font-medium">
-              Password
+              Senha
             </label>
             <Input
               id="password"
@@ -63,7 +65,7 @@ const AdminLogin = ({ onSuccess }: AdminLoginProps) => {
             />
           </div>
           <Button type="submit" className="w-full">
-            Login
+            Entrar
           </Button>
         </form>
       </CardContent>
