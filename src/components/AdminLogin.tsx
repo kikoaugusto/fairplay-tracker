@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
-import { useNavigate } from "react-router-dom";
 
 interface AdminLoginProps {
   onSuccess: () => void;
@@ -11,16 +10,19 @@ interface AdminLoginProps {
 
 const AdminLogin = ({ onSuccess }: AdminLoginProps) => {
   const { toast } = useToast();
-  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Simple authentication for demonstration
     if (username === "admin" && password === "password") {
       onSuccess();
-      navigate("/");
+      toast({
+        title: "Login bem-sucedido",
+        description: "Bem-vindo ao painel administrativo",
+      });
     } else {
       toast({
         title: "Falha no Login",

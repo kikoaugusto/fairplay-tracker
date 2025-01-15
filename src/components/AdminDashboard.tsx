@@ -13,25 +13,39 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
   const [activeFilter, setActiveFilter] = useState("all");
 
   // Temporary data for demonstration
-  const pendingSites = [
-    { id: 1, domain: "suspicious-site.com", reason: "User reported", status: "pending" },
-    { id: 2, domain: "fake-betting.net", reason: "Multiple reports", status: "pending" },
+  const suspiciousSites = [
+    { 
+      id: 1, 
+      domain: "suspicious-site.com", 
+      reason: "Sem licença válida", 
+      status: "pending",
+      dateReported: "2024-01-15",
+      lastUpdated: "2024-01-15"
+    },
+    { 
+      id: 2, 
+      domain: "fake-betting.net", 
+      reason: "Múltiplas denúncias de fraude", 
+      status: "under_investigation",
+      dateReported: "2024-01-14",
+      lastUpdated: "2024-01-16"
+    },
   ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+        <h1 className="text-3xl font-bold">Painel Administrativo</h1>
         <Button variant="outline" onClick={onLogout}>
-          Logout
+          Sair
         </Button>
       </div>
 
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Pending Reviews</CardTitle>
+          <CardTitle>Sites Suspeitos</CardTitle>
           <CardDescription>
-            Review and manage reported sites
+            Analise e gerencie sites denunciados
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -42,8 +56,8 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
             setActiveFilter={setActiveFilter}
           />
           <SiteList
-            sites={pendingSites}
-            type="blacklist"
+            sites={suspiciousSites}
+            type="suspicious"
             searchTerm={searchTerm}
             activeFilter={activeFilter}
           />
