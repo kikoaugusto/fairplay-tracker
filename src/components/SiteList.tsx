@@ -1,18 +1,10 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatusBadge from "./StatusBadge";
-
-interface Site {
-  id: number;
-  domain: string;
-  status: string;
-  operator?: string;
-  licenseNumber?: string;
-  reason?: string;
-}
+import { Site, SiteType } from "@/types/site";
 
 interface SiteListProps {
   sites: Site[];
-  type: "whitelist" | "blacklist";
+  type: SiteType;
   searchTerm: string;
   activeFilter: string;
 }
@@ -36,8 +28,14 @@ const SiteList = ({ sites, type, searchTerm, activeFilter }: SiteListProps) => {
                 <TableHead>Licença</TableHead>
               </>
             )}
-            {type === "blacklist" && <TableHead>Motivo</TableHead>}
+            {(type === "blacklist" || type === "suspicious") && <TableHead>Motivo</TableHead>}
             <TableHead>Status</TableHead>
+            {type === "suspicious" && (
+              <>
+                <TableHead>Data Reportada</TableHead>
+                <TableHead>Última Atualização</TableHead>
+              </>
+            )}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -50,10 +48,16 @@ const SiteList = ({ sites, type, searchTerm, activeFilter }: SiteListProps) => {
                   <TableCell>{site.licenseNumber}</TableCell>
                 </>
               )}
-              {type === "blacklist" && <TableCell>{site.reason}</TableCell>}
+              {(type === "blacklist" || type === "suspicious") && <TableCell>{site.reason}</TableCell>}
               <TableCell>
                 <StatusBadge status={site.status} />
               </TableCell>
+              {type === "suspicious" && (
+                <>
+                  <TableCell>{site.dateReported}</TableCell>
+                  <TableCell>{site.lastUpdated}</TableCell>
+                </>
+              )}
             </TableRow>
           ))}
         </TableBody>
