@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import SiteList from "./SiteList";
 import SearchFilter from "./SearchFilter";
 import { useState } from "react";
+import { Site } from "@/types/site";
 
 interface AdminDashboardProps {
   onLogout: () => void;
@@ -13,7 +14,7 @@ const AdminDashboard = ({ onLogout }: AdminDashboardProps) => {
   const [activeFilter, setActiveFilter] = useState("all");
 
   // Temporary data for demonstration
-  const suspiciousSites = [
+  const suspiciousSites: Site[] = [
     { 
       id: 1, 
       domain: "suspicious-site.com", 
