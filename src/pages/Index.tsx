@@ -3,13 +3,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SiteList from "@/components/SiteList";
 import SubmissionForm from "@/components/SubmissionForm";
 import SearchFilter from "@/components/SearchFilter";
+import { Site } from "@/types/site";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
 
   // Temporary data for demonstration
-  const whitelistedSites = [
+  const whitelistedSites: Site[] = [
     { 
       id: 1, 
       domain: "bet365.bet.br", 
